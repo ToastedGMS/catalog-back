@@ -1,24 +1,20 @@
-# Paulada Games Backend — REST API for E-commerce Platform
+# Catálogo Online - Backend
 
-A fully functional backend API for the Paulada Games e-commerce platform, built with Node.js, Express, TypeScript, and Prisma. This project powers products, categories, users, authentication, and activity tracking for the live frontend.
+REST API totalmente funcional construída para servir o [Front-end](https://github.com/ToastedGMS/catalog-front). Construída com **Node.js**, **Express**, **TypeScript** e **Prisma ORM**. Este Back-end fornece produtos, categorias, usuários, autenticação, e um log de atividades para o frontend.
 
 ## 🚀 Features
 
-- 🔐 Authentication & Authorization with JWT
+- Autenticação JWT
 
-- 🛒 Products & Categories API for dynamic e-commerce content
+- API de e-commerce para alimentação dinâmica de produtos e categorias
 
-- 👤 User Management with roles and permissions
+- Administração de usuários
 
-- 📈 Activity Tracking to monitor user interactions
+- Log de atividades para monitoramento de ações
 
-- ⚡ CORS configured for frontend integration
+- Type-safety e clean code com TypeScript e Prisma ORM
 
-- 🧼 Type-safe code with TypeScript and Prisma ORM
-
-- 🧪 Testing-ready architecture (TDD encouraged)
-
-- 🔧 Environment-based configuration with .env
+- Foco em testes unitários (Test Driven Development)
 
 ## 🔧 Tech Stack
 
@@ -28,13 +24,16 @@ A fully functional backend API for the Paulada Games e-commerce platform, built 
 
 - Database: PostgreSQL (Prisma ORM)
 
-- Language: TypeScript
+- Linguagem: TypeScript
 
-- Testing: Jest / React Testing Library (for API integration tests)
+- Testes: Jest / React Testing Library (for API integration tests)
 
-- Deployment: Railway.app
+- Deployment: Railway
 
 ## 🗂️ Folder Structure (Simplified)
+
+```
+
 src/
 ├── routers/       # Express routers (categories, products, users, auth, activity)
 ├── controllers/   # Request handlers for API endpoints
@@ -44,48 +43,26 @@ src/
 ├── utils/         # Helpers and shared utilities
 └── types/         # TypeScript interfaces and types
 
-## 📦 Endpoints (Examples)
+```
 
-- GET /api/categories — Fetch all categories
+## 📦 Endpoints
 
-- GET /api/products — Fetch all products
+- GET /api/categories — Buscar Categorias
 
-- POST /api/auth/login — User login
+- GET /api/products — Buscar Produtos
 
-- POST /api/users — Create new user
+- POST /api/auth/login — Login
 
-- GET /api/activity — Track user actions
+- POST /api/users — Criação de usuários
 
-**Full documentation and endpoint details are under development.**
-
-🛠️ Setup
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Run tests
-npm run test
-
-# Build for production
-npm run build
-
-
-Environment variables required (.env):
-
-DATABASE_URL=postgresql://username:password@host:port/dbname
-JWT_SECRET=your_jwt_secret
-PORT=3000
+- GET /api/activity — Log de atividades
 
 ## 📌 Deployment
 
-- Hosted on Railway.app
+- Hosting via Railway.app
 
-- Custom domain integration with pauladagames.com.br
+- Automatic builds via GitHub Actions
 
-- Automatic builds via GitHub push
-
-## 🙋‍♂️ Feedback Welcome
-
-This backend is part of my full-stack portfolio. Suggestions, issues, or improvement ideas are always welcome.
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript)
+![Express](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=fff&style=flat)
+![Prisma ORM](https://img.shields.io/badge/Prisma_ORM-2D3748?style=flat-square&logo=prisma&logoColor=white)
