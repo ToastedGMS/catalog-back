@@ -53,11 +53,16 @@ model Category {
   store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
 }
 
+enum UserRole {
+  admin
+  catalog_manager
+}
+
 model User {
   id Int @id @default(autoincrement())
   password String
   username String @unique
-  role String
+  role UserRole @default(admin)
   activityLogs ActivityLog[]
   storeId Int
   store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
