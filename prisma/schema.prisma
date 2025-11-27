@@ -14,12 +14,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Store {
+  id Int @id @default(autoincrement())
+  name String @unique
+  slug String @unique
+  color String
+  logo String @default("https://placehold.co/150x150/?font=playfair-display&text=Placeholder")
+  whatsapp String
+  products Product[]
+  categories Category[]
+  users User[]
+}
+
 model Product {
   id Int @id @default(autoincrement())
   name String @unique
   description String @db.VarChar(255)
   price Decimal @db.Decimal(10, 2)
-  imageUrl String
+  imageUrl String @default("https://placehold.co/600x600/?font=playfair-display&text=Placeholder")
   onSale Boolean @default(false)
   isHighlight Boolean @default(false)
   previousPrice Decimal? @db.Decimal(10, 2)
@@ -28,6 +40,8 @@ model Product {
   isService Boolean @default(false)
   categoryId Int
   category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  storeId Int
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
 }
 
 model Category {
@@ -35,13 +49,18 @@ model Category {
   name String @unique
   position Int @default(autoincrement())
   products Product[] 
+  storeId Int
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
 }
 
 model User {
   id Int @id @default(autoincrement())
   password String
   username String @unique
+  role String
   activityLogs ActivityLog[]
+  storeId Int
+  store Store @relation(fields: [storeId], references: [id], onDelete: Cascade)
 }
 
 model ActivityLog {
