@@ -5,6 +5,7 @@ type SortOrder = 'asc' | 'desc';
 
 export default async function searchProduct(
 	query: string,
+	storeId: string,
 	sortBy?: SortField,
 	sortOrder: SortOrder = 'asc'
 ) {
@@ -18,6 +19,7 @@ export default async function searchProduct(
 
 		const products = await prisma.product.findMany({
 			where: {
+				storeId,
 				OR: [
 					{ name: { contains: query, mode: 'insensitive' } },
 					{ description: { contains: query, mode: 'insensitive' } },

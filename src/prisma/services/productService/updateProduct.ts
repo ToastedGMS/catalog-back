@@ -4,7 +4,8 @@ import prisma from '../../client';
 type UpdateProductProps = Prisma.ProductUpdateInput;
 
 export default async function updateProduct(
-	id: number,
+	id: string,
+	storeId: string,
 	data: UpdateProductProps
 ) {
 	if (data.onSale && !data.previousPrice) {
@@ -13,7 +14,7 @@ export default async function updateProduct(
 
 	try {
 		const updatedProduct = await prisma.product.update({
-			where: { id },
+			where: { id, storeId },
 			data,
 		});
 		return updatedProduct;

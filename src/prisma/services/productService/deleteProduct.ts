@@ -1,9 +1,9 @@
 import prisma from '../../client';
 
-export default async function deleteProduct(id: number) {
+export default async function deleteProduct(id: string, storeId: string) {
 	try {
 		const deletedProduct = await prisma.product.delete({
-			where: { id },
+			where: { id, storeId },
 		});
 		return deletedProduct;
 	} catch (error) {
