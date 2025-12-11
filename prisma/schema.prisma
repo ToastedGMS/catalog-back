@@ -42,6 +42,9 @@ model Product {
   
   storeId        String    @db.Uuid 
   store          Store     @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+  @@unique([name, storeId])
+
 }
 
 model Category {
