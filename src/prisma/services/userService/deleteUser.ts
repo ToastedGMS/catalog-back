@@ -1,6 +1,6 @@
 import prisma from '../../client';
 
-export default async function deleteUser(id: number) {
+export default async function deleteUser(id: string) {
 	try {
 		const deletedUser = await prisma.user.delete({
 			where: { id },

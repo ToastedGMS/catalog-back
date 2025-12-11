@@ -2,7 +2,7 @@ import prisma from '../../client';
 import bcrypt from 'bcryptjs';
 
 export default async function updateUser(
-	id: number,
+	id: string,
 	data: { username?: string; password?: string }
 ) {
 	try {
