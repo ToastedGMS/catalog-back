@@ -1,12 +1,10 @@
 import prisma from '../../client';
+import isUUID from './isUUID';
 
-export default async function getStore(identifier: number | string) {
+export default async function getStore(identifier: string) {
 	try {
 		const store = await prisma.store.findUnique({
-			where:
-				typeof identifier === 'number'
-					? { id: identifier }
-					: { slug: identifier },
+			where: isUUID(identifier) ? { id: identifier } : { slug: identifier },
 			select: {
 				id: true,
 				name: true,

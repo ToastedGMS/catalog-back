@@ -1,12 +1,10 @@
 import prisma from '../../client';
+import isUUID from './isUUID';
 
-export default async function deleteStore(identifier: number | string) {
+export default async function deleteStore(identifier: string) {
 	try {
 		const deletedStore = await prisma.store.delete({
-			where:
-				typeof identifier === 'number'
-					? { id: identifier }
-					: { slug: identifier },
+			where: isUUID(identifier) ? { id: identifier } : { slug: identifier },
 		});
 		return deletedStore;
 	} catch (error) {

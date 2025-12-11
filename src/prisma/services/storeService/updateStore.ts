@@ -1,16 +1,14 @@
 import { Prisma } from '../../../generated/prisma';
 import prisma from '../../client';
+import isUUID from './isUUID';
 
 export default async function updateStore(
-	identifier: number | string,
+	identifier: string,
 	data: Prisma.StoreUpdateInput
 ) {
 	try {
 		const updatedStore = await prisma.store.update({
-			where:
-				typeof identifier === 'number'
-					? { id: identifier }
-					: { slug: identifier },
+			where: isUUID(identifier) ? { id: identifier } : { slug: identifier },
 			data,
 			select: {
 				id: true,
