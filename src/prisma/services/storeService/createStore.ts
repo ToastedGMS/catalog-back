@@ -8,6 +8,7 @@ export default async function createStore(data: Prisma.StoreCreateInput) {
 			select: {
 				id: true,
 				name: true,
+				slug: true,
 				logo: true,
 			},
 		});
